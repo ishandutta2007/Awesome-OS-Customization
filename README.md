@@ -80,3 +80,12 @@ Star the repo if you find it useful!
 
 **Made for power users, IT admins, and enthusiasts building lean Windows installations they can audit and control.**
 Let's make OS customization more open, auditable, and reversible.
+
+## Star History
+
+<a href="https://star-history.com/#ishandutta2007/Awesome-OS-Customization&Timeline" align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/ishandutta2007_Awesome-OS-Customization_growth.svg">
+    <img alt="Star History Chart" src="assets/ishandutta2007_Awesome-OS-Customization_growth.svg">
+  </picture>
+</a>
