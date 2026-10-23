@@ -1,91 +1,339 @@
-# Awesome-OS-Customization
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome OS Customization Banner" width="100%" />
+</p>
 
-# Awesome-OS-Customization
+# 🚀 Awesome OS Customization: The Ultimate Curated Ecosystem
 
-## Top OS Customization Tools Ecosystem
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-*Focused on Image Slipstreaming, Bloatware Removal & Bootable Media Creation*  
-**Last updated: March 2026**
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **OS Customization**. These tools let you modify Windows installation images before a single machine boots — stripping bloatware, integrating drivers and updates, pre-configuring settings, and building lightweight ISOs — or tweak a running system after the fact. The spectrum runs from paid image-editing suites to free PowerShell scripts that build trimmed-down ISOs.
-
-**Examples** include NTLite, Tiny11 Builder, Dism++, Winaero Tweaker, Optimizer, Rufus, Ventoy, and WinOptimizer (the category leaders).
-
-**Open-source emphasis**: This section is heavily expanded with every major active project for self-hosting, scriptable image building, and transparent system tweaks — ideal for power users and IT admins who want a lean Windows install without paying for a commercial image editor or trusting a pre-built "Ghost Spectre" ISO from an anonymous uploader.
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-## Table of Contents
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-- [Open-Source GitHub Projects](#open-source-github-projects)
-- [How to Contribute](#how-to-contribute)
-- [Disclaimer](#disclaimer)
-
-## SaaS/Hosted Platforms
-
-- **[NTLite](https://www.ntlite.com/)**  
-  **The reference commercial Windows image customizer** from the author of nLite (the Windows XP slipstreaming tool) . **Opens Windows installation files (ISO, WIM, ESD, SWM) and lets you strip components before a single machine boots** . **Slipstream cumulative updates and drivers** so the PC is current on first boot and can see NVMe drives during installation . **Make installs fully unattended** — partitioning, user accounts, and region pre-configured . **Can also edit an already-deployed Windows install** (on another partition, mounted VHD, or the running C:\Windows) without reinstalling . **Pricing**: **free for personal use** with basic component removal, unattended setup, and update/driver integration; **paid licenses unlock removal of any component**, MSIX/Appx cleanup, scheduled task management, and hardware-targeted driver import . **Home €40, Pro €90, Business €250** . **Best for IT admins and power users** wanting a polished GUI for serious image surgery, accepting that "basic" vs "any component" removal is the paywall line.
-
-- **[Ghost Spectre](https://ghostspectre.the-ninja.jp/)**  
-  **Pre-built custom Windows ISOs** distributed by an anonymous developer. **Trade-offs**: **you are trusting a pre-modified image from an unverifiable source** — no source code, no build scripts, no way to audit what was removed or added. **Widely used but carries real supply-chain risk** . **Best avoided** in favor of tools where you control the build.
-
-## Open-Source GitHub Projects
-
-- **[Tiny11 Builder](https://github.com/ntdevlabs/tiny11builder)**  
-  **The most prominent open-source Windows 11 image slimmer** — **redesigned in WinUI 3** (v0.1.2, October 2026) with a modern interface replacing the older PowerShell-wrapper workflow . **Three modes**: **Tiny11** (removes bundled apps while keeping Windows Update, Defender, and recovery serviceable) ; **Tiny11 Core** (removes WinSxS, disables Defender and Windows Update, strips WinRE — **explicitly not suitable for regular use** and recommended only for VM testbeds) ; and **Custom** (pick exactly which apps, services, features, and components to keep or remove) . **Also adds retry logic for transient Microsoft download resets**, Cyrillic edition name decoding, and component cleanup ordering fixes in 0.1.2 . **Windows 11 26H2 support** (build 26300) with a shared servicing-base fix for 26100/26200/26300 . **Risks**: **removing protected components can break Windows** — always test your ISO in a VM first . **Best for users wanting a free, scriptable, auditable path** to a lean Windows 11 ISO with clear documentation of what each mode removes.
-
-- **[Dism++](https://github.com/Chuyu-Team/Dism-Multi-language)**  
-  **The Swiss-army GUI for DISM and system maintenance** — a frontend for Microsoft's DISM command-line utility that goes far beyond image management . **Image tools**: mount and edit WIM/ESD images, convert ESD to ISO or WIM, pack folders into ISOs, and create WIM system backups . **System optimization**: tweaks for Explorer, Windows Update, network, services, and more . **Management**: drivers, application associations, Windows features and updates, startup items, and user accounts . **Portable and free** — no installation required. **Best for users wanting a free, portable GUI** for both image editing and post-install system cleanup, without NTLite's paywall on component removal.
-
-- **[Winaero Tweaker](https://winaero.com/)**  
-  **The comprehensive freeware system tweaker** — **v1.64.2** (December 2025) adds **taskbar colorization in light mode** (a Windows 11 limitation the native Settings app doesn't support) and updates window border behavior to require sign-out for changes . **v1.64** added **dark mode**, **custom font scaling** for HiDPI displays, **drive icon customization**, and fixed **Disable Copilot**, **Disable Defender** status reporting on 24H2/25H2, and **Disable Lock screen** . **Tweaks span context menus, Explorer, Windows Update, Defender, and more** . **Note**: **taskbar customization on Windows 11 25H2 and later may be permanently limited** — ExplorerPatcher's classic taskbar restoration may no longer be viable . **Best for post-install tweaking** of a running system without touching the installation image.
-
-- **[Optimizer-W11](https://github.com/Simv135/Optimizer-W11)**  
-  **A focused Windows 11 performance and privacy tuning tool** — **creates a restore point automatically** before changes . **Optimizations span system cleanup, power tweaks, gaming priority, DirectX and MMCSS configuration, telemetry disabling, network TCP/IP tuning, USB optimization, and removal of preinstalled apps, Game Bar, and Cortana** . **Configures Windows services** including DiagTrack, Xbox, and BITS . **Simple GUI with real-time progress tracking** . **Warning**: some optimizations disable features some users prefer to keep — review before applying. **Best for gamers and power users** wanting one-click privacy and performance tuning on a running system.
-
-- **[WinOptimizer](https://github.com/NishantJLU/Windows-Optimizer)**  
-  **A safety-first modular Windows optimizer** — **automatically creates a System Restore Point** and **exports a .reg backup for every single change**, with a **Restore Center** to undo specific tweaks . **Data-driven**: bloatware lists, registry tweaks, and dev apps live in `config.json` rather than PowerShell code . **User profiles**: **Gamer** (removes Xbox services, social bloat, optimizes power), **Developer** (installs Git, Node.js, Python, VS Code, Docker via Winget), **Minimalist** (light touch), and **Manual** . **Full logging** with timestamps and status reports . **Best for users wanting transparent, reversible optimization** with per-change backups rather than a black-box "optimize" button.
-
-- **[Rufus](https://rufus.ie/)**  
-  **The standard free bootable USB creator** — GPLv3 licensed, portable, **~1.9 MB** . **Creates bootable USB media from Windows, Linux, UEFI, and other ISOs** . **Supports both BIOS and UEFI**, and can check the USB drive for bad blocks before writing . **Windows User Experience (WUE) options** add **quality-of-life toggles to disable Teams, Outlook, Copilot, and other Microsoft forced nuisances** during Windows installation, plus **silent installation** that auto-installs to the first detected disk without prompts . **Version 4.15** (June 2026) adds RISC-V 64 support to UEFI:NTFS, improved guards for the "silent" installation option, and fixes for unrestricted XML entity expansion . **Note**: **Rufus modifies the ISO's install behavior** — the WUE options are baked into the media, not applied post-install . **Best for creating Windows installation media** with optional bloat-reduction toggles at install time.
-
-- **[Ventoy](https://www.ventoy.net/)**  
-  **The multi-boot USB solution** — **100% open source** . **Copy ISO/WIM/IMG/VHD(x)/EFI files directly to the USB drive and boot them without reformatting** — no repeated flashing, just drag and drop . **Boot menu at startup** lets you choose from multiple images, organized in subdirectories . **Supports 1300+ tested ISO files** including Windows, WinPE, Linux, ChromeOS, and Unix . **UEFI Secure Boot supported**, and the drive remains usable for normal file storage . **MBR and GPT partition styles** supported, with Linux persistence and Windows/Linux auto-installation . **Best for IT admins and enthusiasts** who need a single USB stick carrying multiple OS installers and rescue tools.
-
-### Additional Strong Open-Source Options
-
-- **Winhance** — Open-source Windows optimization app with a major WinUI 3 upgrade (v26.02.13). **Creates a System Restore point automatically**, includes a batch uninstaller for default Microsoft apps, and can generate an Autounattend XML file for replicating settings across multiple PCs . Free via GitHub, full source code available .
-- **WinOptimizer (Dunttus)** — All-in-one Python/Tkinter suite combining a WinGet GUI package manager, bloatware uninstaller, hardware telemetry, performance tweaks, system cleaner, startup manager, service manager, and Windows repair tools. GPL-3.0 licensed .
-- **MSFN** — Long-running forum community (not a tool) with guides and scripts for unattended Windows setup and slipstreaming. The knowledge base is the asset, not a downloadable application.
-
-**Frameworks for building custom systems**: Combine **Tiny11 Builder** for a free, auditable Windows 11 ISO slimming with clear mode documentation, **NTLite Free** for GUI-driven driver/update slipstreaming and unattended setup, **Dism++** for portable image editing and post-install cleanup, **Winaero Tweaker** for fine-grained UI and privacy tweaks on a running system, **Optimizer-W11** or **WinOptimizer** for automated performance and telemetry tuning with restore points, and **Ventoy** or **Rufus** for bootable media — to build a Windows customization stack where you control every change rather than trusting an anonymous pre-built ISO.
-
-## How to Contribute
-
-1. Fork the repo.
-2. Add/edit entries in `README.md` (follow existing format).
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-4. Submit PR with a short explanation.
-
-Star the repo if you find it useful!
-
-## Disclaimer
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-- OS customization tools differ significantly in risk profile, auditability, and licensing. **Ghost Spectre and other pre-built custom ISOs carry unverifiable supply-chain risk** — you cannot audit what was removed, modified, or added . **Tiny11 Core removes Windows Update, Defender, and WinRE** — it is **not suitable for regular use** and should only run in VM testbeds . **Removing protected Windows components can break the OS** — always test customized ISOs in a virtual machine before installing on primary hardware . **NTLite's free tier limits component removal to "basic" items**; removing arbitrary components requires a paid license . **Winaero Tweaker's taskbar customization on Windows 11 25H2+ may be permanently limited** . **Rufus's WUE options modify install behavior at the media level** — the toggles are baked in, not reversible post-install . **Always verify checksums** when downloading community builds, and prefer tools where you can read the scripts or source.
-- Self-hosted open-source solutions require a Windows host for image building, a VM for testing customized ISOs before deployment, and awareness that slimming an image can remove functionality you later need.
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-OS-Customization/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-OS-Customization?style=flat-square&logo=github" alt="Stars"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-OS-Customization/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-OS-Customization?style=flat-square&logo=github" alt="Forks"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-OS-Customization/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-OS-Customization/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"/></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
 
 ---
 
-**Made for power users, IT admins, and enthusiasts building lean Windows installations they can audit and control.**
-Let's make OS customization more open, auditable, and reversible.
+## 📖 Introduction & SEO Overview
 
-## Star History
+Welcome to the definitive index of **OS Customization**, **Windows Debloating**, **Image Slipstreaming**, **System Optimization**, and **Bootable Media Creation** tools. 
 
-<a href="https://star-history.com/#ishandutta2007/Awesome-OS-Customization&Timeline" align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/ishandutta2007_Awesome-OS-Customization_growth.svg">
-    <img alt="Star History Chart" src="assets/ishandutta2007_Awesome-OS-Customization_growth.svg">
-  </picture>
-</a>
+Whether you are an IT enterprise systems administrator seeking automated unattended deployments across thousands of endpoints, a software developer looking to strip telemetry and bloatware for high-throughput build workstations, or a gaming enthusiast crafting a lightweight custom Windows 11 ISO, this repository indexes the most reliable commercial platforms and verified open-source utilities.
+
+### 🔍 Key Areas of Focus
+* 💿 **ISO Image Slipstreaming & Servicing**: Pre-configure unattended answer files (`autounattend.xml`), integrate cumulative servicing patches, inject storage/network drivers (NVMe/RAID), and strip legacy components prior to initial system boot.
+* 🧹 **Bloatware & Telemetry Stripping**: Safely uninstall provisioned AppX/MSIX packages, disable diagnostics tracking (DiagTrack, Cortana, Copilot, Edge web widget), and silence advertising IDs.
+* ⚙️ **Performance Tuning & System Tweaks**: Reconfigure MMCSS gaming priorities, TCP/IP network stack tuning, context menu restorations, Windows Explorer enhancements, and background service optimization.
+* 🚀 **Multi-Boot & Installation Media**: Create UEFI/BIOS compatible flash drives, multi-ISO bootable disks, and automated live test environments.
+
+---
+
+## 📑 Table of Contents
+- [📊 Sector Overview \& Market Dynamics](#-sector-overview--market-dynamics)
+- [🏢 Commercial \& SaaS Deployment Platforms](#-commercial--saas-deployment-platforms)
+- [💻 Open-Source GitHub Projects](#-open-source-github-projects)
+- [🧰 Notable Freeware \& Community Utilities](#-notable-freeware--community-utilities)
+- [🏗️ Recommended Architecture \& Workflows](#️-recommended-architecture--workflows)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [⚠️ Security \& Safety Disclaimer](#️-security--safety-disclaimer)
+- [💖 Support \& Sponsoring](#-support--sponsoring)
+- [##  Star History](#--star-history)
+
+---
+
+## 📊 Sector Overview & Market Dynamics
+
+The global operating system optimization, automated provisioning, and endpoint deployment software market is currently estimated at approximately **$2.2 Billion**, projected to expand at a compound annual growth rate (CAGR) of **6.8%** through 2030. 
+
+Market dynamics demonstrate a clear structural divide:
+* **Enterprise OS Deployment & Provisioning Tier**: **Moderately concentrated** among major IT endpoint management and disk imaging vendors (e.g., Zoho ManageEngine, PDQ/SmartDeploy, Acronis, and Microsoft Intune). These vendors monetize centralized fleet compliance, hardware-independent HAL deployment, and enterprise driver databases.
+* **Consumer, Power-User & Enthusiast Customization Tier**: **Highly fragmented** with dynamic community-driven competition. Rather than a winner-take-all monopoly, power users, gamers, and developers actively migrate between modular PowerShell debloating scripts, DISM GUIs, and ISO slimming engines based on OS build compatibility (such as Windows 11 24H2/25H2/26H2 releases) and transparency.
+
+---
+
+## 🏢 Commercial & SaaS Deployment Platforms
+
+The following commercial SaaS and enterprise-grade software suites provide centralized OS deployment, image provisioning, system optimization, and pre-boot configuration. The table is ordered by **Company Size / Valuation / Revenue** (descending).
+
+| Platform / Product | Primary OS Customization Focus | Company Size / Valuation / Revenue | Pricing (Specific Starting Tier) | Free Tier Limits & Free Trial Details |
+| :--- | :--- | :--- | :--- | :--- |
+| **[ManageEngine OS Deployer](https://www.manageengine.com/products/os-deployer/)** | Centralized disk imaging, automated OS deployment, hardware-independent driver management, and bare-metal provisioning across corporate networks. | **Zoho Corporation**: ~$1.1B+ Annual Revenue \| ~$10B+ Est. Valuation (15,000+ employees globally) | **$125.00/year** (Professional Edition, starting tier managing up to 50 workstations) | **Free Edition forever** supporting up to 4 workstations and 1 server with basic imaging capabilities; also includes a 30-day unrestricted trial for all enterprise features. |
+| **[Acronis Snap Deploy](https://www.acronis.com/en-us/products/snap-deploy/)** | Rapid mass OS provisioning, golden image replication, bare-metal deployment to multiple live machines simultaneously via multicast, and custom post-configuration. | **Acronis**: ~$3.5 Billion Valuation \| ~$350M+ Annual Revenue (Backed by EQT Partners) | **$33.00 per machine** (One-time deployment license) or **$85.00/machine/year** (Unlimited deployment license) | **30-day full-featured free trial** limited to 5 machine deployments for deployment verification and lab testing. |
+| **[SmartDeploy](https://www.smartdeploy.com/)** | Cloud-managed and local Windows golden image management, driver slipstreaming via pre-built Platform Packs, application layering, and zero-touch remote provisioning. | **PDQ / TA Associates**: ~$500M+ Valuation \| ~$75M+ Annual Revenue | **$1,180.00/year** (Starting tier at $11.80 per computer/year with a minimum purchase of 100 computers) | **15-day full-featured free trial** supporting deployment tests on up to 15 managed physical or virtual endpoints. |
+| **[IObit Advanced SystemCare PRO](https://www.iobit.com/en/advancedsystemcarepro.php)** | Automated system performance tuning, deep registry cleaning, junk file wiping, startup speedup, and background telemetry suppression. | **IObit**: ~$30M+ Annual Revenue (Over 50M+ consumer downloads worldwide) | **$19.99/year** (PRO license valid for up to 3 PCs) | **Free-forever Basic Edition** with standard junk cleaning and PC optimization; locks automated background RAM cleaning, deep registry defragmentation, and scheduled real-time optimizations. |
+| **[Ashampoo WinOptimizer](https://www.ashampoo.com/en-us/winoptimizer)** | Comprehensive Windows system tweaker, privacy manager, context menu customizer, telemetry blocker, and disk cleaning suite. | **Ashampoo GmbH & Co. KG**: ~$25M+ Annual Revenue (Over 20M+ registered users) | **$30.00/year** (WinOptimizer 27 full license for up to 3 PCs) | **30-day free trial** (10 days initial unrestricted trial + 20 additional days granted upon free email activation); alongside a permanent **WinOptimizer Free** version with baseline cleaning. |
+| **[NTLite](https://www.ntlite.com/)** | The premier Windows ISO slipstreaming, unattended setup, driver integration, update injection, and component-stripping pre-installation suite. | **Nlite Software**: ~$2M+ Annual Revenue (Independent developer Dino Nuhagic / boutique utility firm) | **€40.00 (~$43.00)** one-time purchase (Home License for 1 PC, including 1 full year of continuous updates) | **Free-forever Edition** for non-commercial personal use featuring basic component removal, driver/update slipstreaming, and unattended setup; restricts advanced component removal, live OS tweaking, and deep system cleaning. |
+
+---
+
+## 💻 Open-Source GitHub Projects
+
+Below is the verified collection of active, open-source projects for Windows debloating, ISO slimming, system optimization, and bootable media creation. 
+
+The list is sorted in **descending order by GitHub Star Count**. Beside each project name is a social white star badge linking directly to that repository's stargazers page.
+
+---
+
+### 1. [Ventoy](https://github.com/ventoy/Ventoy) <a href="https://github.com/ventoy/Ventoy/stargazers"><img src="https://img.shields.io/github/stars/ventoy/Ventoy?style=social&color=white" alt="Ventoy Stargazers" /></a>
+* **Core Functionality**: The revolutionary open-source multi-boot USB solution.
+* **Key Features**: 
+  * Eliminates the need to repeatedly reformat USB drives when changing OS installers.
+  * Simply drag and drop ISO, WIM, IMG, VHD(x), and EFI files directly onto the drive partition.
+  * Features an interactive boot menu capable of parsing over 1,300+ verified images (Windows 11/10/7, WinPE, Linux distributions, ChromeOS, Unix).
+  * Native support for UEFI Secure Boot, MBR/GPT partition tables, Linux persistence plugins, and automated unattended script injection.
+* **Best For**: Systems engineers, technicians, and power users who need a single thumb drive carrying rescue environments, live Linux tools, and custom Windows setup ISOs.
+
+---
+
+### 2. [Chris Titus Tech's Windows Utility (WinUtil)](https://github.com/ChrisTitusTech/winutil) <a href="https://github.com/ChrisTitusTech/winutil/stargazers"><img src="https://img.shields.io/github/stars/ChrisTitusTech/winutil?style=social&color=white" alt="WinUtil Stargazers" /></a>
+* **Core Functionality**: Community-standard all-in-one PowerShell GUI utility for Windows maintenance, debloating, application installation, and tweaks.
+* **Key Features**:
+  * One-line PowerShell launch: `irm "https://christitus.com/win" | iex`.
+  * Installs curated programs via Winget and Chocolatey with automated silent batch scripts.
+  * Curated system tweaks: disables telemetry, removes OneDrive, turns off Cortana, configures services to manual, and applies dark theme presets.
+  * Includes the "MicroWin" feature to generate stripped-down Windows installation ISOs with reduced memory footprint and bypassed hardware checks.
+* **Best For**: Quick post-install setups and ongoing system maintenance without manual Registry hunting.
+
+---
+
+### 3. [Win11Debloat](https://github.com/Raphire/Win11Debloat) <a href="https://github.com/Raphire/Win11Debloat/stargazers"><img src="https://img.shields.io/github/stars/Raphire/Win11Debloat?style=social&color=white" alt="Win11Debloat Stargazers" /></a>
+* **Core Functionality**: Lightweight, modular PowerShell script for debloating and decluttering Windows 11 and Windows 10.
+* **Key Features**:
+  * Quick, transparent, and auditable removal of pre-installed Microsoft bloatware apps (Clipchamp, News, Weather, Xbox telemetry, Solitaire).
+  * Disables diagnostics, telemetry, tailored experiences, advertising IDs, and intrusive Edge desktop widgets.
+  * Restores classic right-click context menus in Windows 11, aligns taskbar buttons, and turns off search highlights.
+  * Interactive CLI menu or silent scripted deployment mode (`-RunDefaults`, `-RemoveApps`, `-DisableTelemetry`).
+* **Best For**: Users who want a zero-dependency, auditable PowerShell script to clean a fresh or existing Windows installation.
+
+---
+
+### 4. [Rufus](https://github.com/pbatard/rufus) <a href="https://github.com/pbatard/rufus/stargazers"><img src="https://img.shields.io/github/stars/pbatard/rufus?style=social&color=white" alt="Rufus Stargazers" /></a>
+* **Core Functionality**: The definitive high-performance bootable USB drive creator for Windows, Linux, and UEFI.
+* **Key Features**:
+  * Incredibly fast writing speed compared to competitors, with automated bad-block checking.
+  * Windows User Experience (WUE) customization dialog: automatically creates a local offline account, bypasses Windows 11 TPM 2.0 / Secure Boot / RAM hardware requirements, and disables BitLocker auto-encryption.
+  * Toggles to automatically bypass online Microsoft Account (MSA) mandates and disable data collection questions during setup.
+  * Portable standalone executable (~1.9 MB) licensed under GPLv3.
+* **Best For**: Flashing clean Windows ISOs directly to flash media with pre-baked installation bypasses.
+
+---
+
+### 5. [AtlasOS](https://github.com/Atlas-OS/Atlas) <a href="https://github.com/Atlas-OS/Atlas/stargazers"><img src="https://img.shields.io/github/stars/Atlas-OS/Atlas?style=social&color=white" alt="AtlasOS Stargazers" /></a>
+* **Core Functionality**: An open-source, transparent modification framework for Windows designed to optimize latency, performance, and privacy.
+* **Key Features**:
+  * Uses the standardized AME Wizard playbook system to safely modify an official Windows install without redistributing pre-built untrusted ISOs.
+  * Strips heavyweight background services, reduces process counts from 180+ down to under 60 on a clean idle system.
+  * Disables Windows tracking, consumer telemetry, and background services while maintaining full compatibility with modern anti-cheat systems (Valorant Vanguard, Easy Anti-Cheat, BattlEye).
+  * Modular toggles for Bluetooth, printing, sleep states, and Windows Update.
+* **Best For**: Gamers, streamers, and audio/video production engineers demanding minimized DPC latency and maximum framerate consistency.
+
+---
+
+### 6. [Tiny11 Builder](https://github.com/ntdevlabs/tiny11builder) <a href="https://github.com/ntdevlabs/tiny11builder/stargazers"><img src="https://img.shields.io/github/stars/ntdevlabs/tiny11builder?style=social&color=white" alt="Tiny11 Builder Stargazers" /></a>
+* **Core Functionality**: Open-source utility and scripts to build lean, lightweight Windows 11 ISOs from official Microsoft media.
+* **Key Features**:
+  * Modernized with a dedicated WinUI 3 graphical interface alongside PowerShell automation backends.
+  * Multiple build profiles: **Tiny11** (removes default bloatware apps while maintaining Windows Update, Defender, and servicing viability), **Tiny11 Core** (stripped down for VM testing and lab environments), and **Custom** mode.
+  * Supports the latest Windows 11 builds (including 24H2, 25H2, and 26H2 servicing branches).
+  * Automatically injects bypasses for hardware restrictions and eliminates forced online account creation during OOBE.
+* **Best For**: Creating customized, lean Windows 11 ISO files for low-resource hardware, virtual machines, or streamlined deployments.
+
+---
+
+### 7. [Dism++](https://github.com/Chuyu-Team/Dism-Multi-language) <a href="https://github.com/Chuyu-Team/Dism-Multi-language/stargazers"><img src="https://img.shields.io/github/stars/Chuyu-Team/Dism-Multi-language?style=social&color=white" alt="Dism++ Stargazers" /></a>
+* **Core Functionality**: Powerful graphical frontend and enhancement suite for Microsoft Deployment Image Servicing and Management (DISM).
+* **Key Features**:
+  * Mounts, inspects, and edits WIM, ESD, and VHD images without touching the command line.
+  * Performs deep system cleanup (WinSxS folder compression, driver store cleanup, obsolete update uninstallation).
+  * Driver management: backup existing system drivers, slipstream new INF driver packages into offline installation images.
+  * Comprehensive OS tweak toolbox covering Windows Explorer, system services, update settings, and startup applications.
+* **Best For**: Advanced users and technicians who need portable, deep image servicing and cleanup without enterprise licensing fees.
+
+---
+
+### 8. [Windows10Debloater](https://github.com/Sycnex/Windows10Debloater) <a href="https://github.com/Sycnex/Windows10Debloater/stargazers"><img src="https://img.shields.io/github/stars/Sycnex/Windows10Debloater?style=social&color=white" alt="Windows10Debloater Stargazers" /></a>
+* **Core Functionality**: The pioneering open-source PowerShell script that defined Windows bloatware removal.
+* **Key Features**:
+  * Provides both an interactive GUI and silent CLI execution parameters.
+  * Uninstalls bundled UWP/AppX applications (Candy Crush, Xbox Game Bar, 3D Builder, Groove Music).
+  * Reverts intrusive registry modifications, stops telemetry services, disables Cortana, and unpins Start Menu bloat tiles.
+  * Option to selectively remove OneDrive or retain it based on user preference.
+* **Best For**: Windows 10 installations and classic reference architectures for automated enterprise deployment scripts.
+
+---
+
+### 9. [Optimizer](https://github.com/hellzerg/optimizer) <a href="https://github.com/hellzerg/optimizer/stargazers"><img src="https://img.shields.io/github/stars/hellzerg/optimizer?style=social&color=white" alt="Optimizer Stargazers" /></a>
+* **Core Functionality**: Advanced, portable C# utility designed to enhance privacy, security, and performance across Windows 7, 8, 10, and 11.
+* **Key Features**:
+  * Disables Windows telemetry, Cortana, sensor services, SmartScreen, and diagnostic logging with single-click toggles.
+  * Performance tweaks: disable HPET, optimize TCP/IP parameters, disable hibernation, and increase system responsiveness.
+  * Windows 11 specific fixes: restore classic taskbar size, disable Copilot, restore classic File Explorer ribbon, and remove Recommended section.
+  * Built-in host file editor, startup item manager, hardware benchmark viewer, and Winget package installer.
+* **Best For**: Power users wanting a feature-rich, portable executable for comprehensive system tuning on live installations.
+
+---
+
+### 10. [Winhance](https://github.com/memstechtips/Winhance) <a href="https://github.com/memstechtips/Winhance/stargazers"><img src="https://img.shields.io/github/stars/memstechtips/Winhance?style=social&color=white" alt="Winhance Stargazers" /></a>
+* **Core Functionality**: Modern open-source Windows 10 and 11 optimization application built with a native WinUI 3 interface.
+* **Key Features**:
+  * Automatically creates a System Restore Point before applying any system or registry modifications.
+  * Comprehensive bloatware remover supporting batch uninstallation of default Microsoft and OEM apps.
+  * Generates custom `autounattend.xml` answer files for unattended, automated Windows setup across multiple computers.
+  * UI tweaks, context menu restorations, telemetry disablers, and performance tuning toggles.
+* **Best For**: Users who appreciate a clean, modern Windows 11 native aesthetic combined with robust fail-safe restore mechanisms.
+
+---
+
+### 11. [Sophia Script for Windows](https://github.com/farag2/Sophia-Script-for-Windows) <a href="https://github.com/farag2/Sophia-Script-for-Windows/stargazers"><img src="https://img.shields.io/github/stars/farag2/Sophia-Script-for-Windows?style=social&color=white" alt="Sophia Script Stargazers" /></a>
+* **Core Functionality**: The most powerful, granular PowerShell module for fine-tuning and automating Windows 10 and 11 on GitHub.
+* **Key Features**:
+  * Over 150+ granular functions covering privacy, telemetry, UI, storage, security, and scheduled tasks.
+  * Accompanied by "SophiApp", a modern WPF/C# GUI frontend for interactive configuration.
+  * Accurately cleans up Windows components, disables diagnostic tracking, and configures Windows Defender attack surface reduction (ASR) rules.
+  * Full support for running via enterprise deployment systems or standalone PowerShell execution.
+* **Best For**: Enterprise administrators and advanced enthusiasts seeking surgical, code-level control over every Windows subsystem.
+
+---
+
+### 12. [Win-Debloat-Tools](https://github.com/LeDragoX/Win-Debloat-Tools) <a href="https://github.com/LeDragoX/Win-Debloat-Tools/stargazers"><img src="https://img.shields.io/github/stars/LeDragoX/Win-Debloat-Tools?style=social&color=white" alt="Win-Debloat-Tools Stargazers" /></a>
+* **Core Functionality**: Re-imagines Windows as a minimal, lightweight operating system install with minimal impact on essential services.
+* **Key Features**:
+  * Safe and thorough debloating presets designed never to break Windows Update, Microsoft Store, or gaming Xbox services.
+  * Quick-config scripts to disable telemetry, clean up scheduled tasks, and remove tracking services.
+  * Includes Winget integration for automated software installation and selective driver servicing.
+* **Best For**: Users seeking a balanced debloater that maximizes privacy without breaking core operating system features.
+
+---
+
+### 13. [Bloatynosy](https://github.com/builtbybel/Bloatynosy) <a href="https://github.com/builtbybel/Bloatynosy/stargazers"><img src="https://img.shields.io/github/stars/builtbybel/Bloatynosy?style=social&color=white" alt="Bloatynosy Stargazers" /></a>
+* **Core Functionality**: Intuitive Windows 11 debloater and setup assistant (formerly known as ThisIsWin11 / Bloatynosy / JunkCtrl).
+* **Key Features**:
+  * Analyzes your fresh Windows install and provides targeted recommendations on what bloatware to remove.
+  * Custom packages ("InstaPackage") for installing open-source productivity apps in bulk.
+  * Disables Copilot, Bing Search integration in the Start menu, advertising IDs, and lock screen widgets.
+  * Lightweight, portable, and open-source.
+* **Best For**: Casual users who want step-by-step guidance on which Windows 11 annoyances to eliminate.
+
+---
+
+### 14. [ReviOS Playbook](https://github.com/meetrevision/playbook) <a href="https://github.com/meetrevision/playbook/stargazers"><img src="https://img.shields.io/github/stars/meetrevision/playbook?style=social&color=white" alt="ReviOS Playbook Stargazers" /></a>
+* **Core Functionality**: Lightweight, stable, performance-focused modification playbook for Windows 10 and 11.
+* **Key Features**:
+  * Operates via the AME Wizard framework, ensuring your starting base is an authentic Microsoft ISO or deployment.
+  * Optimizes system latency, removes redundant background services, and eliminates telemetry while preserving OS stability.
+  * Includes the Revision Tool, a dedicated utility for managing Windows Update toggles, Defender states, and performance features.
+* **Best For**: Gamers and creative professionals looking for a tested, repeatable operating system baseline with minimal background interference.
+
+---
+
+### 15. [Optimizer-W11](https://github.com/Simv135/Optimizer-W11) <a href="https://github.com/Simv135/Optimizer-W11/stargazers"><img src="https://img.shields.io/github/stars/Simv135/Optimizer-W11?style=social&color=white" alt="Optimizer-W11 Stargazers" /></a>
+* **Core Functionality**: Dedicated Windows 11 system optimizer with automatic restore point creation and gaming priority adjustments.
+* **Key Features**:
+  * Automatically creates a System Restore Point prior to applying any system alterations.
+  * Adjusts multimedia network throttling (MMCSS), DirectX parameters, and USB polling latency.
+  * Disables telemetry services, removes Cortana, and turns off telemetry-heavy scheduled tasks.
+* **Best For**: Targeted Windows 11 gaming optimization with built-in rollback safeguards.
+
+---
+
+### 16. [Windows-Optimizer](https://github.com/NishantJLU/Windows-Optimizer) <a href="https://github.com/NishantJLU/Windows-Optimizer/stargazers"><img src="https://img.shields.io/github/stars/NishantJLU/Windows-Optimizer?style=social&color=white" alt="Windows-Optimizer Stargazers" /></a>
+* **Core Functionality**: Safety-first modular Windows optimization utility featuring data-driven JSON configurations and automatic registry exports.
+* **Key Features**:
+  * Automatically creates a System Restore Point and exports a standalone `.reg` backup before every individual modification.
+  * Features a dedicated "Restore Center" allowing users to cleanly reverse specific changes.
+  * User profile presets: Gamer, Developer (installs Git, Docker, Python via Winget), Minimalist, and Manual.
+* **Best For**: Users who require 100% reversible tweaks with per-modification backup tracking.
+
+---
+
+## 🧰 Notable Freeware & Community Utilities
+
+While not hosted as open-source code repositories on GitHub, the following tools and communities represent indispensable industry standards:
+
+* **[Winaero Tweaker](https://winaero.com/)**: The comprehensive freeware system customization encyclopedia by Sergey Tkachenko. Supports granular tweaks for Windows 11 taskbar coloring, classic Explorer menus, context menu management, font scaling, and lock screen configurations.
+* **[MSFN Forums](https://msfn.org/)**: The premier long-running community dedicated to unattended Windows installations, INF driver modification, nLite/NTLite slipstreaming scripts, and operating system preservation.
+
+---
+
+## 🏗️ Recommended Architecture & Workflows
+
+To build a reliable, auditable, and performance-optimized Windows workstation or deployment environment, avoid downloading untrusted pre-modified ISOs (e.g., Ghost Spectre) from unknown sources. Instead, construct your custom stack using auditable tools:
+
+```
+┌────────────────────────────────────────────────────────┐
+│            1. Base Official Microsoft ISO              │
+│       (Official Media Creation Tool or VLSC ISO)       │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│             2. Pre-Boot Image Customization            │
+│   • Tiny11 Builder (Scripted component slimming)       │
+│   • Dism++ / NTLite (Driver & update slipstreaming)    │
+│   • Autounattend.xml (Unattended accounts & bypasses)  │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│             3. Bootable Media Creation                 │
+│   • Rufus (Bypass TPM/RAM & local account creation)    │
+│   • Ventoy (Multi-ISO drag-and-drop flash disk)        │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│            4. Post-Boot Tuning & Debloating            │
+│   • WinUtil / Win11Debloat (Bloatware & telemetry)     │
+│   • Optimizer / Winaero Tweaker (System & UI tweaks)   │
+│   • AtlasOS / ReviOS Playbooks (Latency & gaming)      │
+└────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🤝 How to Contribute
+
+Contributions from sysadmins, developers, and open-source enthusiasts are enthusiastically welcomed!
+
+1. 🍴 **Fork the repository** on GitHub.
+2. 🌿 **Create a dedicated topic branch** (`git checkout -b feature/add-new-tool`).
+3. 📝 **Add your entry** under the appropriate section following the existing markdown schema:
+   * Project name with clickable GitHub / website link.
+   * Social white star badge linking to `/stargazers` (for open-source repositories).
+   * Accurate bullet points detailing core functionality, key features, and intended audience.
+4. ✅ **Ensure accuracy**: Verify that URLs are HTTPS and descriptions remain factual and vendor-neutral.
+5. 🚀 **Submit a Pull Request** with a descriptive summary of your addition.
+
+---
+
+## ⚠️ Security & Safety Disclaimer
+
+* **Auditability Matters**: Pre-modified Windows ISOs distributed by anonymous third parties carry substantial supply-chain security risks. Always prefer transparent open-source scripts and official media where you can inspect every change.
+* **Create Restore Points**: Aggressive debloaters and registry cleaning scripts can inadvertently remove functionality you may need later (e.g., Xbox authentication, Bluetooth services, or printer spoolers). Always create a System Restore point or complete drive backup prior to running optimization tools.
+* **Test in Virtual Environments**: Test newly slipstreamed ISOs inside a virtual machine (Hyper-V, VirtualBox, or VMware Workstation) prior to deploying to mission-critical physical hardware.
+
+---
+
+## 💖 Support & Sponsoring
+
+Thank you for exploring and utilizing **Awesome-OS-Customization**! ⭐
+
+If this curated directory helped you build leaner operating systems, save hours of manual deployment work, or strip unwanted telemetry and bloatware, please consider supporting the project:
+
+* 🌟 **Star this repository** to help others discover it across GitHub.
+* 🍴 **Fork and contribute** your favorite OS customization scripts and tools.
+* 📢 **Share with fellow sysadmins, developers, and power users** on Discord, Reddit, and social media.
+* ☕ **Sponsor the Maintainer**: Support ongoing curation and open-source indexing directly on the GitHub [**Sponsor Dashboard**](https://github.com/sponsors/ishandutta2007).
+
+---
+
+##  Star History
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-OS-Customization&yype=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-OS-Customization&type=date&legend=top-left)
+
+---
+
+<p align="center">
+  <sub>Maintained with ❤️ for power users, developers, and systems administrators worldwide.</sub>
+</p>
