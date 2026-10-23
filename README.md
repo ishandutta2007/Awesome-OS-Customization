@@ -2,7 +2,7 @@
 
 # Awesome-OS-Customization
 
-# Top OS Customization Tools Ecosystem
+## Top OS Customization Tools Ecosystem
 
 **Curated List of SaaS Products & Open-Source GitHub Projects**  
 *Focused on Image Slipstreaming, Bloatware Removal & Bootable Media Creation*  
