@@ -72,7 +72,7 @@ The following commercial SaaS and enterprise-grade software suites provide centr
 
 Below is the verified collection of active, open-source projects for Windows debloating, ISO slimming, system optimization, and bootable media creation. 
 
-The list is sorted in **descending order by GitHub Star Count**. Beside each project name is a social white star badge linking directly to that repository's stargazers page.
+The list is sorted in **descending order by GitHub Stars_Count**. Beside each project name is a social white Stars_Badge linking directly to that repository's stargazers page.
 
 ---
 
@@ -301,7 +301,7 @@ Contributions from sysadmins, developers, and open-source enthusiasts are enthus
 2. 🌿 **Create a dedicated topic branch** (`git checkout -b feature/add-new-tool`).
 3. 📝 **Add your entry** under the appropriate section following the existing markdown schema:
    * Project name with clickable GitHub / website link.
-   * Social white star badge linking to `/stargazers` (for open-source repositories).
+   * Social white Stars_Badge linking to `/stargazers` (for open-source repositories).
    * Accurate bullet points detailing core functionality, key features, and intended audience.
 4. ✅ **Ensure accuracy**: Verify that URLs are HTTPS and descriptions remain factual and vendor-neutral.
 5. 🚀 **Submit a Pull Request** with a descriptive summary of your addition.
@@ -337,3 +337,12 @@ If this curated directory helped you build leaner operating systems, save hours 
 <p align="center">
   <sub>Maintained with ❤️ for power users, developers, and systems administrators worldwide.</sub>
 </p>
+
+## Star History
+
+<a href="https://star-history.com/#ishandutta2007/Awesome-OS-Customization&Timeline" align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/ishandutta2007_Awesome-OS-Customization_growth.svg">
+    <img alt="Star History Chart" src="assets/ishandutta2007_Awesome-OS-Customization_growth.svg">
+  </picture>
+</a>
